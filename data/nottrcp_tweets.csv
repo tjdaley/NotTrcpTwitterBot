@@ -1,0 +1,77 @@
+"trcp_num","trcp_text","trcp_length"
+1,"TRCP's purpose is fair adjudication under the law, liberally construed for efficiency. ",87
+2,"TRCPs govern most courts but do not supersede the old ""lunacy"" laws.",68
+3,"Don't get hung up on verb tense, pronoun gender, or plural vs. singular.",72
+"3a","Local rules are allowed but cannot make life worse than these rules do.",70
+4,"Time periods don't count the first day but do count the last day. Short periods do not include weekends, long periods do.",121
+5,"Courts can extend deadlines but not their own plenary power. Postmark prior to deadline with receipt w/in 10 days of deadline satisfies the deadline.",149
+6,"Cannot file most suits or serve process on Sunday, but citation by publication, which is a scam anyway, can be done on Sunday.",126
+7,"People can represent themselves or hire attorneys. Attorneys can appear for their clients.",90
+8,"The attorney in charge is the attorney whose name appears first on a pleading or who is later designated as being in charge.",124
+9,"If your case is not important, only two attorneys can speak for you at trial, unless the judge wants to hear from someone else.",127
+10,"If an attorney wants to quit, that attorney better get on the stick way before trial and follow the notice requirements perfectly.",130
+11,"If it's not in writing or spoken on the record, then it's not an agreement. Also, if you write it down and they accept it, it is an agreement.",142
+12,"If the other side swears that they don't believe an attorney has authority to act, that attorney has to show that they do have authority to act for their client.",161
+13,"Think before you sign a pleading because if it's nonsense, it may cost you a sack of price and a bag of money.",110
+14,"Attorneys and agents can make affidavits on behalf of their clients or principals. Yeah, bet you didn't know that, did you?",123
+"14b","The court's clerk has to file and keep trial exhibits as per the Supreme Court's rules.",87
+"14c","If you are required to post a bond and the judge trusts you, you can hand them a check instead of arranging for a bond.",119
+15,"Writs and service cover pages have to say, ""The State of Texas"" and warn the recipient to respond by the Monday that follows the 20th after they receive the paperwork.",167
+16,"Whoever serves papers on someone has to make a note of the date and time they received the paperwork, how and where they served the sucker, and send those notes back to the court clerk.",185
+17,"A process server must serve papers without waiting to get paid first.",69
+18,"The death of the judge is not the death of your suit.",53
+"18a","In most courts, a party can ask for a new judge if any reason in TRCP 18b applies but you better get on it as soon as you know the reason for recusal exists.",157
+"18b","You can ask for a different judge if a stranger to the case would agree that the judge is not able to be or not able to appear to be fair.",138
+"18c","A judge can permit live-streaming of courtroom proceedings if the Supreme Court allows it, or the parties agree, or if it's a ceremonial proceeding.",148
+19,"The court's term starts when the judge takes the bench and ends when the judge leaves. No other formality is required.",118
+20,"Don't worry about this rule. Not one judge abides by it and absolutely no one cares.",84
+21,"If you want the judge to take some action, you have to ask for it in writing, give a copy to all parties, and certify that you did so. If it needs a hearing, you need to give at least 3 days' notice. Cf. Trial notice at TRCP 245.",229
+"21a","When you start a suit, you have to serve the party you are suing. Once the suit is up and running, you can serve their attorney. If you serve someone by mail, they get an extra three days to act.",195
+"21b","We're serious about following rules 21 and 21a. If you don't follow them, you can be sanctioned.",96
+"21c","Some facts are sensitive, e.g. a Social Security number. Unless the sensitive data are required, you must redact it before filing. If you are not permitted to redact, then you must warn the district clerk. Only 3 people in TX understand this rule.",247
+22,"If you want to sue someone, you have to file a written petition asking the judge to take some action on your behalf.",116
+23,"When you file your suit, the clerk has to assign the next consecutive file number to it. No UUIDs. Just sequential numbers. This becomes important later. (E.G. TRCP 27)",168
+24,"When the clerk receives your paperwork, the clerk has to make sure the case number is on it, stamp the date and time of receipt on it, and sign the clerk's name to it.",167
+25,"The clerk must maintain a registry of actions in a convenient (to whom?) form.",78
+26,"The clerk's registry of actions and a note of the clerk's ruling is must be kept as a PERMANENT RECORD.",103
+27,"Hard to summarize this one: ""The cases shall be placed on the docket as they are filed."" (N.B. They won't be heard, settled or resolved in that order.)",151
+28,"You can file a suit using your DBA, but if one the the folks you're suing asks for it, you must disclose your true name.",120
+29,"You can sue a defunct company if no receiver has been appointed to wind the company down.",89
+30,"Assigning your contractual obligations does not mean you can't be sued.",71
+31,"You can't sue an insurance company unless you also sue the insured party. Yes, many of these rules apply to all civil suits but are clearly meant to protect insurance companies.",177
+32,"An insurance company who is being sued along with the insured can ask the judge to determine whether the insurance company really insures the purported insured.",160
+33,"If you sue or are such by political or administrative subdivision of the State, that suit has to identify the subdivision by corporate name.",140
+34,"If you sue an insured sheriff, constable or deputy for something they did as a sheriff, constable or deputy, they can drag their insurance company into the suit and delay the suit to get their insurance company served.",218
+35,"It's OK. The monkeys have typewriters and this is what they came up with.",73
+36,"If one state official is sued and gives bond, all superior state officials can be hauled into the suit.",103
+37,"Either side of the case may bring in third parties, but can't do so in a way calculated to delay the trial of the case.",119
+38,"A defendant can bring in a third party who can then counter-sue all other parties with exceptions to protect...you guessed it...insurance companies.",148
+39,"If a third party is required for just resolution of a case and is amenable to service, that party shall be joined and, if not, the judge must decide whether the case can continue.",179
+40,"People claiming a right to relief arising from the same wrong can join their claims to existing claims if they want to.",119
+41,"Because parties can be joined or dripped easily, mis-joinder is not a valid reason to have the entire case dismissed. (It's very windy outside tonight.)",152
+42,"Class actions are permitted in Texas and this tortured rule shows the evolution in class-action-friendliness in Texas.",118
+43,"A plaintiff who is exposed to multiple liability may require that all persons having claims, irrespective of origin, be joined into one suit.",141
+44,"Children and other lunatics, idiots, or incompetents who don't have legal guardians can be represented by ""next friend"".",120
+45,"A civil lawsuit is underway once the plaintiff files a petition giving a concise statement of claims and the defendant files an answer.",135
+46,"What went wrong in Texas that we must have a rule that says the petition must be one single document and the answer must be one single document?",144
+47,"A party's original pleading must provide fair notice of what it wants by providing a simple statement of its claims.",116
+48,"A party may make alternative causes of action and, as long as one of the claims is valid, the case can progress.",112
+49,"A single judgment is valid even if there are multiple claims and all but one are defective.",91
+50,"Claims and defenses must be made in separately numbered paragraphs.",67
+51,,0
+,,0
+,,0
+,,0
+,,0
+,,0
+,,0
+,,0
+,,0
+,,0
+,,0
+,,0
+,,0
+,,0
+,,0
+,,0
+,,0

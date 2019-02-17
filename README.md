@@ -6,7 +6,7 @@ This is a very simple Tweet publisher that publishes a Tweet every 24 hours from
 This version focuses on the Texas Rules of Civil Procedure. The only thing that is TRCP-centric about this is that the publisher
 looks at the "TRCP _X_:" prefix of the last Tweet, where _X_ is an index into the CSV file. From there it determines the _next_
 Tweet in the CSV file to send. If you have a different way of keeping track of what has been tweeted and what has not, then the
-publish.py script can be easily adopted for your purposes.
+publish.py script can be easily adapted for your purposes.
 
 # Usage Scenarios
 
@@ -15,7 +15,7 @@ This Twitter publisher can be run a number of ways.
 ## From a Terminal Session
 
 If you run this from a terminal session, then you may want to use the **--status** option, which will print a simple progress bar
-that counts down the minutes until the next tweet will be published. The following command
+that counts down the minutes until the next tweet will be published. The following command:
 
 ```
 $ python publish.py --status --time 10:00
@@ -30,8 +30,7 @@ Remaining |XXXXXXXXXX-----------------------| 74.4% 1075 min
 ## From a _cron_ Job
 
 If you want to Tweet out at a different interval than every 24-hours, which is baked into this publisher, you can run it
-from a cron job, have it publish its Tweet and then quit, rather than sit there waiting until it is time to publish the
-next update, e.g. the following crontab entry will publish a Tweet at 6:30 p.m. MON-FRI (no weekend tweeting).
+from a cron job, have it publish its Tweet and then quit. The following crontab entry will publish a Tweet at 6:30 p.m. MON-FRI (no weekend tweeting).
  
 ```
 30  18 *  *  1-5         cd ~/NotTrcpTwitterBot/app && /usr/bin/python publish.py --once
@@ -39,7 +38,7 @@ next update, e.g. the following crontab entry will publish a Tweet at 6:30 p.m. 
 
 ## As a Systemd Service
 
-If you want to run this as a _systemd_ service, you can have it publish a Tweet every day at 9:00 a.m. (the default for --time)
+If you want to run this as a _systemd_ service, you can have it publish a Tweet every day at 10:00 a.m.
 with this command, which comes from my AWS environment, thus the "ubuntu" username.
 
 ```
@@ -48,7 +47,7 @@ Description=Starts and Stops the NotTrcpTwitterBot service
 
 [Service]
 User=ubuntu
-ExecStart=/usr/bin/python3 publish.py
+ExecStart=/usr/bin/python3 publish.py --time 10:00
 RestartSec=10
 Restart=on-failure
 RestartPreventExitStatus=SIGKILL
@@ -63,21 +62,20 @@ WantedBy=multi-user.target
 
 ## During Testing
 
-If you need to run without actually publishing to Twitter, then you can include the **--notweet** option. For example, if you use
-this command line:
+If you need to run without actually publishing to Twitter, then you can include the **--notweet** option. For example:
 
 ```
 $ python publish.py --status --time 17:24 --notweet
 ```
 
 The above command line will print a status bar, pretend to send a tweet, then wait until 5:24 p.m. to (fake) send the next tweet.
-I use this to test the logic for analyzing thelast tweet to determine the next tweet.
+I use this to test the logic for analyzing the last tweet to determine the next tweet, i.e. debugging the ```get_last_trcp()``` and ```get_next_trcp()``` methods.
 
 # Resources and Inspiration
 
 I wrote this as my first Twitterbot after reading (most of) Tony Veale's and Mike Cook's amazing book, 
-[TwitterBots: Making Machines that Make Meaning](https://mitpress.mit.edu/books/twitterbots). This script does not do justice to their
-work. But before I can get into the meat of what they have to teach, I have to sate my curiosity about the mechanics of getting
+[TwitterBots: Making Machines that Make Meaning](https://mitpress.mit.edu/books/twitterbots). (Still reading and learning.) This script does not do justice to their
+work. But I just had to sate my curiosity about the mechanics of getting
 a Twitter Bot account set up and publishing Tweets.
 
 Another resource that I like is 

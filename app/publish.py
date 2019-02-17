@@ -73,7 +73,6 @@ class Publisher(object):
         df = pd.read_csv(TWEET_FILE)
         row_interator = df.iterrows()
         for i, row in row_interator:
-            self.logger.debug("%s %s = %s", i, last_trcp, row['trcp_num'])
             if row['trcp_num'] == last_trcp:
                 break
 
@@ -100,7 +99,7 @@ class Publisher(object):
                 status_text to post.      
         """
         if status_text:
-            #self.api.PostUpdate(status_text)
+            self.api.PostUpdate(status_text)
             self.logger.info("Posted: %s", status_text)
         else:
             self.logger.info("No status text given.")

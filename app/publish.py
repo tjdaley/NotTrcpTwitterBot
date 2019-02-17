@@ -46,12 +46,24 @@ class Publisher(object):
 
     def get_last_trcp(self, last_tweet=None)-> str:
         """
-        Get our history so that we can see the last Tweet we sent.
+        Get our history so that we can see the last TRCP-related Tweet we sent.
+
+        This can be called two ways: with or without an argument. The idea is that
+        the first time through, we have to will call this without the last_tweet
+        argument. That will result in us searching our timeline to find out what
+        we did last.
+
+        Then, if we're processing in a loop (program invoked without the --once flag),
+        on subsequent calls to this method, the processing loop will supply the last
+        tweet that it sent, which will prevent us from having to search the timeline
+        every time.
 
         Returns (str) Last TRCP tweeted or None
         """
         regexp = r"^TRCP (.*):"
 
+        # If invoked without an argument, go through our timeline, newest to oldest, until we find
+        # a Tweet about TRCP, i.e. that matches our regexp.
         if not last_tweet:
             statuses = self.api.GetUserTimeline(screen_name=self.screen_name)
             for status in statuses:
@@ -59,23 +71,45 @@ class Publisher(object):
                 if match:
                     last_trcp = match.group(1)
                     return last_trcp
-        else:
-            match = re.search(regexp, last_tweet)
-            if match:
-                return match.group(1)
+
+        # Otherwise, just process the argument text.
+        match = re.search(regexp, last_tweet)
+        if match:
+            return match.group(1)
 
         return None
 
     def get_next_trcp(self, last_trcp:str)->str:
         """
-        Get the next TRCP to tweet, based on the last TRCP tweeted.
+        Get the next TRCP to tweet, based on the last TRCP tweeted. We reopen and reprocess
+        the TWEET_FILE every time. This allows our Tweet generator to add tweets to the file
+        or correct upcoming tweets.
+
+        NOTE: If you change the format of the tweet, especially the "TRCP #:" pattern of the
+        beginning of the tweet, you may need to change the _regexp_ in get_last_trcp().
+
+        NOTE: This will not work properly for transmitting your first Tweet. I wrote this
+        after I had already transmitted a tweet. If there is no last_trcp available, this
+        method will fail to produce the FIRST tweet.
+
+        Args:
+            last_trcp (str): TRCP number associated with the last tweet we sent.
+
+        Returns:
+            (str): The next Tweet to post to Twitter.
         """
+        # Read our list of possible tweets into a Pandas dataframe.
         df = pd.read_csv(TWEET_FILE)
+
+        # Go through each row of the dataframe looking for a row having the same TRCP
+        # number as the last one we posted to Twitter.
         row_interator = df.iterrows()
         for i, row in row_interator:
             if row['trcp_num'] == last_trcp:
                 break
 
+        # Now we have the row index of the last tweet we sent. Try to get the NEXT row
+        # in the dataframe and use it as our next tweet.
         try:
             next_trcp = df.iloc[[i+1]]
             trcp_text = clean(next_trcp.get("trcp_text").item())
@@ -132,14 +166,17 @@ def minutes_until_time(future_time:str)->int:
     How many minutes until the given time?
 
     Args:
-        future_time (str): Future time
+        future_time (str): Future time in 24-hour HH:MM format.
 
     Returns:
         (int) Seconds until the time specified.
+        (None) If future_time is in the wrong format.
     """
     # Regex for 24-hour time
-    regex = r'^(([0-2]?\d)|(2[0-3])):?([0-5]\d)$'
-    matches = re.search(regex, future_time)
+    regexp = r'^(([0-2]?\d)|(2[0-3])):?([0-5]\d)$'
+
+    # See if the future_time given to us satisfies the regular expression.
+    matches = re.search(regexp, future_time)
 
     if not matches:
         print("Invalid time (1). Must be 00:00 - 23:59")
@@ -149,18 +186,29 @@ def minutes_until_time(future_time:str)->int:
         print("Invalid time (2). Must in the format HH:MM using a 24-hour clock. [%s]" % matches.lastindex)
         return None
 
+    # Extract the hour and minute fields.
     hour = int(matches.group(1))
     minute = int(matches.group(4))
 
+    # Figure out how many minutes between now and future_time.
     now = datetime.now()
-    result = int((timedelta(hours=24) - (now - now.replace(hour=hour, minute=minute, second=0, microsecond=0))).total_seconds() % (24*60*60))
-    result = int(result / 60)
-    return result
+    seconds_remaining = int((timedelta(hours=24) - (now - now.replace(hour=hour, minute=minute, second=0, microsecond=0))).total_seconds() % (24*60*60))
+    minutes_remaining = int(result / 60)
+    return minutes_remaining
 
 def get_options()->dict:
     """
     Read command line options.
+
+    Args:
+        None.
+
+    Returns:
+        (dict): Contains one entry for each command line option.
     """
+
+    # Create an epilog that shows up at the bottom of the usage display, e.g. -h, that
+    # shows how to use the command line options in different use cases.
     epilog = """
     SOME USE CASES:
 
@@ -180,8 +228,12 @@ def get_options()->dict:
     parser.add_argument("--notweet", action="store_true", default=False, help="Indicates that you want a dry-run...no actual tweeting.")
     args = parser.parse_args()
     next_time = minutes_until_time(args.time or '09:00')
+
+    # If the user specifies --time and --once, we'll ignore the --time argument.
     if args.once:
         next_time = None
+    
+    # Construct and return dictionary of options.
     return {"time": next_time, "status_bar": args.status, "once": args.once, "notweet": args.notweet}
 
 
@@ -195,16 +247,16 @@ def main():
     program.
 
     Command line args:
-        --time HH:MM . . . . The time of day to post tweets in the future, using a 24-hour clock.
-                             Default = 09:00.
-
-        --status . . . . . . If specified, causes a status bar to show how close we are to sending
-                             out the next Tweet. Do not specify this flag if running from systemd.
+        --notweet. . . . . . If specified, no tweets will be published. Use this for dry-run testing.
 
         --once . . . . . . . If specified, will send ONE Tweet and quit. Use this if you are going
                              run this from cron and control the schedule that way.
 
-        --notweet. . . . . . If specified, no tweets will be published. Use this for dry-run testing.
+        --status . . . . . . If specified, causes a status bar to show how close we are to sending
+                             out the next Tweet. Do not specify this flag if running from systemd or cron.
+
+        --time HH:MM . . . . The time of day to post tweets in the future, using a 24-hour clock.
+                             Default = 09:00.
     """
     options = get_options()
 

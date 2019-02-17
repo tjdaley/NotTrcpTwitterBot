@@ -2,7 +2,7 @@
 publish.py - publish tweets.
 """
 __author__ = "Thomas J. Daley, J.D."
-__version__ = ".0.0.1"
+__version__ = "0.0.1"
 
 import argparse
 from datetime import datetime, timedelta
@@ -49,7 +49,7 @@ class Publisher(object):
         Get our history so that we can see the last TRCP-related Tweet we sent.
 
         This can be called two ways: with or without an argument. The idea is that
-        the first time through, we have to will call this without the last_tweet
+        the first time through, we will call this without the last_tweet
         argument. That will result in us searching our timeline to find out what
         we did last.
 
@@ -57,6 +57,9 @@ class Publisher(object):
         on subsequent calls to this method, the processing loop will supply the last
         tweet that it sent, which will prevent us from having to search the timeline
         every time.
+
+        NOTE: If you change the format of the text that is published, you may have to
+        update the _regexp_ below so that it can parse the preamble of the Tweet properly.
 
         Returns (str) Last TRCP tweeted or None
         """

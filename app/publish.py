@@ -44,19 +44,25 @@ class Publisher(object):
         self.logger.debug("%s last said '%s'", self.screen_name, self.last_tweet)
         return api
 
-    def get_last_trcp(self)-> str:
+    def get_last_trcp(self, last_tweet=None)-> str:
         """
         Get our history so that we can see the last Tweet we sent.
 
         Returns (str) Last TRCP tweeted or None
         """
         regexp = r"^TRCP (.*):"
-        statuses = self.api.GetUserTimeline(screen_name=self.screen_name)
-        for status in statuses:
-            match = re.search(regexp, status.text)
+
+        if not last_tweet:
+            statuses = self.api.GetUserTimeline(screen_name=self.screen_name)
+            for status in statuses:
+                match = re.search(regexp, status.text)
+                if match:
+                    last_trcp = match.group(1)
+                    return last_trcp
+        else:
+            match = re.search(regexp, last_tweet)
             if match:
-                last_trcp = match.groups()[0]
-                return last_trcp
+                return match.group(1)
 
         return None
 
@@ -67,10 +73,10 @@ class Publisher(object):
         df = pd.read_csv(TWEET_FILE)
         row_interator = df.iterrows()
         for i, row in row_interator:
-            self.logger.debug("row['trcp_num'] = '%s' vs '%s'", row['trcp_num'], last_trcp)
+            self.logger.debug("%s %s = %s", i, last_trcp, row['trcp_num'])
             if row['trcp_num'] == last_trcp:
                 break
-        self.logger.debug("i = %s; last_trcp = %s", i, last_trcp)
+
         try:
             next_trcp = df.iloc[[i+1]]
             trcp_text = clean(next_trcp.get("trcp_text").item())
@@ -94,7 +100,7 @@ class Publisher(object):
                 status_text to post.      
         """
         if status_text:
-            self.api.PostUpdate(status_text)
+            #self.api.PostUpdate(status_text)
             self.logger.info("Posted: %s", status_text)
         else:
             self.logger.info("No status text given.")
@@ -156,33 +162,78 @@ def get_options()->dict:
     """
     Read command line options.
     """
-    parser = argparse.ArgumentParser(description="Publish tweets.")
-    parser.add_argument('--time', '-t', action='store', help='The 24-hour clock time that SUBSEQUENT tweets should go out.')
+    epilog = """
+    SOME USE CASES:
+
+    1. Run interactively from a terminal session, publishing a tweet at 9:00 a.m. every day and displaying a status bar:\n\n
+           $ python publish.py --status\n\n
+    2. Run interactively from a terminal session for debugging purposes. Shows status bar, does not send Tweets:\n\n
+           $ python publish.py --status --notweet\n\n
+    3. Run from systemd, sending a tweet at 9:30 a.m. every day:\n\n
+           $ /usr/bin/python publish.py --time 09:30\n\n
+    4. Run from cron, where crontab will handle the scheduling of tweets (the only way to send more or less than one per day):\n\n
+           $ /usr/bin/python publish.py --once\n\n
+    """
+    parser = argparse.ArgumentParser(description="Publish tweets.", epilog=epilog, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument('--time', '-t', action='store', default="09:00", help='The 24-hour clock time that SUBSEQUENT tweets should go out.')
+    parser.add_argument('--status', '-s', action='store_true', default=False, help='Indicates you want a status bar on the screen. Default is no.')
+    parser.add_argument("--once", action="store_true", default=False, help="Indicates that we should send a Tweet and quit.")
+    parser.add_argument("--notweet", action="store_true", default=False, help="Indicates that you want a dry-run...no actual tweeting.")
     args = parser.parse_args()
     next_time = minutes_until_time(args.time or '09:00')
-    return {"time": next_time}
+    if args.once:
+        next_time = None
+    return {"time": next_time, "status_bar": args.status, "once": args.once, "notweet": args.notweet}
+
 
 def main():
     """
     main routine for this app.
+
+    Will publish a Tweet every 24 hours until there are no more tweets to tweet.
+    Note that it reopens and reprocesses the tweet file every day, so it's possible for you to add
+    tweets to the end of the file and have them picked up in the future without having to restart the
+    program.
+
+    Command line args:
+        --time HH:MM . . . . The time of day to post tweets in the future, using a 24-hour clock.
+                             Default = 09:00.
+
+        --status . . . . . . If specified, causes a status bar to show how close we are to sending
+                             out the next Tweet. Do not specify this flag if running from systemd.
+
+        --once . . . . . . . If specified, will send ONE Tweet and quit. Use this if you are going
+                             run this from cron and control the schedule that way.
+
+        --notweet. . . . . . If specified, no tweets will be published. Use this for dry-run testing.
     """
     options = get_options()
-    if not options["time"]:
-        exit()
 
-    progress_bar = ProgressBar(24*60 , "Remaining")
+    if options["status_bar"]:
+        progress_bar = ProgressBar(24*60 , "Remaining")
+
     publisher = Publisher()
     next_tweet = (publisher.get_next_trcp(publisher.get_last_trcp()))
-    remaining_minutes = options["time"]
+    remaining_minutes = options["time"] or 0
 
     try:
         while next_tweet:
-            publisher.post_status(next_tweet)
+            if not options["notweet"]:
+                publisher.post_status(next_tweet)
+            else:
+                print("Would have tweeted:", next_tweet)
+
             while remaining_minutes > 0:
-                progress_bar.update(remaining_minutes, "%s min" % str(remaining_minutes))
-                time.sleep(60) # Tweet again in 24 hours
+                if options["status_bar"]:
+                    progress_bar.update(remaining_minutes, "%s min" % str(remaining_minutes))
+                time.sleep(60) # Update the status bar each minute
                 remaining_minutes -= 1
-            next_tweet = publisher.get_next_trcp(next_tweet)
+            
+            if options["once"]:
+                next_tweet = None
+            else:
+                next_tweet = publisher.get_next_trcp(publisher.get_last_trcp(next_tweet))
+
             remaining_minutes = 24*60
     except KeyboardInterrupt:
         print("\nGood bye")

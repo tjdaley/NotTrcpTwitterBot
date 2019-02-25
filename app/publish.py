@@ -63,7 +63,7 @@ class Publisher(object):
 
         Returns (str) Last TRCP tweeted or None
         """
-        regexp = r"^TRCP (.*):"
+        regexp = r"^TRCP ([^:.]*):"
 
         # If invoked without an argument, go through our timeline, newest to oldest, until we find
         # a Tweet about TRCP, i.e. that matches our regexp.

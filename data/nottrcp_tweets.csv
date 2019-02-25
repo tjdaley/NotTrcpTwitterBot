@@ -1,77 +1,163 @@
-"trcp_num","trcp_text","trcp_length"
-1,"TRCP's purpose is fair adjudication under the law, liberally construed for efficiency. ",87
-2,"TRCPs govern most courts but do not supersede the old ""lunacy"" laws.",68
-3,"Don't get hung up on verb tense, pronoun gender, or plural vs. singular.",72
-"3a","Local rules are allowed but cannot make life worse than these rules do.",70
-4,"Time periods don't count the first day but do count the last day. Short periods do not include weekends, long periods do.",121
-5,"Courts can extend deadlines but not their own plenary power. Postmark prior to deadline with receipt w/in 10 days of deadline satisfies the deadline.",149
-6,"Cannot file most suits or serve process on Sunday, but citation by publication, which is a scam anyway, can be done on Sunday.",126
-7,"People can represent themselves or hire attorneys. Attorneys can appear for their clients.",90
-8,"The attorney in charge is the attorney whose name appears first on a pleading or who is later designated as being in charge.",124
-9,"If your case is not important, only two attorneys can speak for you at trial, unless the judge wants to hear from someone else.",127
-10,"If an attorney wants to quit, that attorney better get on the stick way before trial and follow the notice requirements perfectly.",130
-11,"If it's not in writing or spoken on the record, then it's not an agreement. Also, if you write it down and they accept it, it is an agreement.",142
-12,"If the other side swears that they don't believe an attorney has authority to act, that attorney has to show that they do have authority to act for their client.",161
-13,"Think before you sign a pleading because if it's nonsense, it may cost you a sack of price and a bag of money.",110
-14,"Attorneys and agents can make affidavits on behalf of their clients or principals. Yeah, bet you didn't know that, did you?",123
-"14b","The court's clerk has to file and keep trial exhibits as per the Supreme Court's rules.",87
-"14c","If you are required to post a bond and the judge trusts you, you can hand them a check instead of arranging for a bond.",119
-15,"Writs and service cover pages have to say, ""The State of Texas"" and warn the recipient to respond by the Monday that follows the 20th after they receive the paperwork.",167
-16,"Whoever serves papers on someone has to make a note of the date and time they received the paperwork, how and where they served the sucker, and send those notes back to the court clerk.",185
-17,"A process server must serve papers without waiting to get paid first.",69
-18,"The death of the judge is not the death of your suit.",53
-"18a","In most courts, a party can ask for a new judge if any reason in TRCP 18b applies but you better get on it as soon as you know the reason for recusal exists.",157
-"18b","You can ask for a different judge if a stranger to the case would agree that the judge is not able to be or not able to appear to be fair.",138
-"18c","A judge can permit live-streaming of courtroom proceedings if the Supreme Court allows it, or the parties agree, or if it's a ceremonial proceeding.",148
-19,"The court's term starts when the judge takes the bench and ends when the judge leaves. No other formality is required.",118
-20,"Don't worry about this rule. Not one judge abides by it and absolutely no one cares.",84
-21,"If you want the judge to take some action, you have to ask for it in writing, give a copy to all parties, and certify that you did so. If it needs a hearing, you need to give at least 3 days' notice. Cf. Trial notice at TRCP 245.",229
-"21a","When you start a suit, you have to serve the party you are suing. Once the suit is up and running, you can serve their attorney. If you serve someone by mail, they get an extra three days to act.",195
-"21b","We're serious about following rules 21 and 21a. If you don't follow them, you can be sanctioned.",96
-"21c","Some facts are sensitive, e.g. a Social Security number. Unless the sensitive data are required, you must redact it before filing. If you are not permitted to redact, then you must warn the district clerk. Only 3 people in TX understand this rule.",247
-22,"If you want to sue someone, you have to file a written petition asking the judge to take some action on your behalf.",116
-23,"When you file your suit, the clerk has to assign the next consecutive file number to it. No UUIDs. Just sequential numbers. This becomes important later. (E.G. TRCP 27)",168
-24,"When the clerk receives your paperwork, the clerk has to make sure the case number is on it, stamp the date and time of receipt on it, and sign the clerk's name to it.",167
-25,"The clerk must maintain a registry of actions in a convenient (to whom?) form.",78
-26,"The clerk's registry of actions and a note of the clerk's ruling is must be kept as a PERMANENT RECORD.",103
-27,"Hard to summarize this one: ""The cases shall be placed on the docket as they are filed."" (N.B. They won't be heard, settled or resolved in that order.)",151
-28,"You can file a suit using your DBA, but if one the the folks you're suing asks for it, you must disclose your true name.",120
-29,"You can sue a defunct company if no receiver has been appointed to wind the company down.",89
-30,"Assigning your contractual obligations does not mean you can't be sued.",71
-31,"You can't sue an insurance company unless you also sue the insured party. Yes, many of these rules apply to all civil suits but are clearly meant to protect insurance companies.",177
-32,"An insurance company who is being sued along with the insured can ask the judge to determine whether the insurance company really insures the purported insured.",160
-33,"If you sue or are such by political or administrative subdivision of the State, that suit has to identify the subdivision by corporate name.",140
-34,"If you sue an insured sheriff, constable or deputy for something they did as a sheriff, constable or deputy, they can drag their insurance company into the suit and delay the suit to get their insurance company served.",218
-35,"It's OK. The monkeys have typewriters and this is what they came up with.",73
-36,"If one state official is sued and gives bond, all superior state officials can be hauled into the suit.",103
-37,"Either side of the case may bring in third parties, but can't do so in a way calculated to delay the trial of the case.",119
-38,"A defendant can bring in a third party who can then counter-sue all other parties with exceptions to protect...you guessed it...insurance companies.",148
-39,"If a third party is required for just resolution of a case and is amenable to service, that party shall be joined and, if not, the judge must decide whether the case can continue.",179
-40,"People claiming a right to relief arising from the same wrong can join their claims to existing claims if they want to.",119
-41,"Because parties can be joined or dripped easily, mis-joinder is not a valid reason to have the entire case dismissed. (It's very windy outside tonight.)",152
-42,"Class actions are permitted in Texas and this tortured rule shows the evolution in class-action-friendliness in Texas.",118
-43,"A plaintiff who is exposed to multiple liability may require that all persons having claims, irrespective of origin, be joined into one suit.",141
-44,"Children and other lunatics, idiots, or incompetents who don't have legal guardians can be represented by ""next friend"".",120
-45,"A civil lawsuit is underway once the plaintiff files a petition giving a concise statement of claims and the defendant files an answer.",135
-46,"What went wrong in Texas that we must have a rule that says the petition must be one single document and the answer must be one single document?",144
-47,"A party's original pleading must provide fair notice of what it wants by providing a simple statement of its claims.",116
-48,"A party may make alternative causes of action and, as long as one of the claims is valid, the case can progress.",112
-49,"A single judgment is valid even if there are multiple claims and all but one are defective.",91
-50,"Claims and defenses must be made in separately numbered paragraphs.",67
-51,,0
-,,0
-,,0
-,,0
-,,0
-,,0
-,,0
-,,0
-,,0
-,,0
-,,0
-,,0
-,,0
-,,0
-,,0
-,,0
-,,0
+trcp_num,trcp_text,trcp_length
+1,"TRCP's purpose is fair adjudication under the law, liberally construed for efficiency. ",94
+2,"TRCPs govern most courts but do not supersede the old ""lunacy"" laws.",75
+3,"Don't get hung up on verb tense, pronoun gender, or plural vs. singular.",79
+3a,Local rules are allowed but cannot make life worse than these rules do.,79
+4,"Time periods don't count the first day but do count the last day. Short periods do not include weekends, long periods do.",128
+5,Courts can extend deadlines but not their own plenary power. Postmark prior to deadline with receipt w/in 10 days of deadline satisfies the deadline.,156
+6,"Cannot file most suits or serve process on Sunday, but citation by publication, which is a scam anyway, can be done on Sunday.",133
+7,People can represent themselves or hire attorneys. Attorneys can appear for their clients.,97
+8,The attorney in charge is the attorney whose name appears first on a pleading or who is later designated as being in charge.,131
+9,Only two attorneys can speak for you at trial unless your case is important or the judge wants to hear from someone else.,128
+10,"If an attorney wants to quit, that attorney must get the judge's permission via a written motion. The judge can impose conditions on the withdrawal. NB: Send the motion to your client first class mail **AND** certified mail. PS. Check local rules--they might help you.",276
+11,"If you have an agreement you want the court to enforce, get it in writing and file it with the court (best) or get it on the record in open court (sloppy). Otherwise, it's just talk. Rf TRCP 1: What constitutes a writing may not be all that formal so be careful!",270
+12,"If you swear that you believe opposing counsel is acting without client authority, upon 10 days' notice, he must show up and prove his authority to act. Upon his failure to do so, the court MUST strike the pleadings unless another attorney appears and shows authority.",276
+13,"Before you sign a pleading, you have the duty of reasonable inquiry that it is not based on nonsense. Bringing a ""test"" suit or a nonsense suit is contemptable (jail) and sanctionable. NB: Bringing a baseless request for sanctions under this rule is just as bad.",270
+14,"When they have knowledge of the facts, attorneys and agents can make affidavits on behalf of their clients or principals. It's not the status as agent or attorney that supports this rule, it's the personal knowledge of the agent or attorney. (Rf. Cantu v Holiday Inns)",276
+14b,"The court's clerk must file and keep exhibits offered OR admitted as per the Supreme Court's rules, which say nothing about throwing away exhibits immediately after an interlocutory hearing.",199
+14c,"If you are required to post a surety bond and the judge trusts you, you can deliver a check drawn on a charted, insured bank instead of arranging for a bond. You'll earn interest on it, unless you fail and must forfeit  your bond.",239
+15,"Writs and process pages have to say, ""The State of Texas,"" be directed to a sheriff or constable, and warn the recipient to respond by the Monday that follows the 20th day after they receive the paperwork.",213
+16,"Whoever serves papers on someone has to make a note of the date and time they received the paperwork, how, when and where they served the papers, and send those notes back to the court clerk on a copy of the service page.",229
+17,A process server must serve papers without waiting to get paid first.,77
+18,"Even after a judge dies, becomes disabled, or resigns, the show can, must, and will go on.",98
+18a,"A party can ask for a new judge (See TRCP 18b for reasons). You should ask as soon as you know of the basis for your request. Do it right--you only get three strikes. Be smart--if you do this just to delay or otherwise screw with the system, you may be sanctioned.",273
+18b,"If a reasonable person, knowing all the facts in the public domain concerning the judge's conduct and relationships, would have a reasonable doubt that the judge is actually impartial, there is probably a basis to disqualify or recuse the judge. (Rf Drake v Walker)",274
+18c,"A judge can permit live-streaming and filming of courtroom proceedings if the Supreme Court allows it, or the parties and each witness agree, or if it's a ceremonial proceeding.",186
+19,"Other than in Armstong and Harris County's, district court terms begin on the first Mondays in January and July, no matter what day that is and whether the judge is actually there. No ceremony is required. (See Tx. Govt Code 24.012)",240
+20,FREE DAY. No one cares about this rule.,47
+21,"Need a judge to decide? Ask in writing, give a copy to all parties, and certify that you did so. (*SEE LOCAL RULES*) Must give at least 3 days notice of a hearing. Cf. Trial notice at TRCP 245. NB. No one understands 21(f)(11)--The clerk WILL refuse to file your document.",280
+21a,"When you start a suit, you have to personally serve the party you are suing. After that, you can serve their attorney. A person served by mail gets an extra three days to act. KEEP YOUR PROOF OF SERVICE. (Tip: PDF the e-file envelope details and keep with your pleading.)",280
+21b,"We're serious about following rules 21 and 21a. If you don't follow them, you can be sanctioned. See, TRCP 215.2(b) for a list of sanctions. They're tough.",164
+21c,"Some facts are sensitive, e.g. a Social Security number. Unless the sensitive datum is required, you must redact it before filing. If you are not permitted to redact, then you must warn the district clerk. Only 3 people in TX understand this rule.",256
+22,"If you want to sue someone, you have to file a written petition asking the judge to take some action.",109
+23,"When you file your suit, the clerk has to assign the next consecutive file number to it. No UUIDs. Just sequential numbers. This becomes important later. (E.G. TRCP 27)",176
+24,"When the clerk receives your petition, the clerk must make sure the case number is on it, stamp the date and time of receipt on it, and sign the clerk's name to it.",172
+25,The clerk must maintain a registry of actions in a convenient (to whom?) form.,86
+26,The clerk's registry of actions and a note of the court's ruling is must be kept as a PERMANENT RECORD.,111
+27,"""The cases shall be placed on the docket as they are filed."" Sure, but they won't be heard, settled or resolved in that order. (Some rules pre-date aggressive discovery and motion practice: Attorneys just filed suits, set them for trial, and ambushed each other.)",271
+28,"You can file a suit using your DBA (trade name), but if one the the folks you're suing asks for it, your true name may [?] be substituted for the DBA.",158
+29,"Dissolving your company will not protect you or it from being sued (unless a wind-down receiver has been appointed). An aggrieved party can sue the officers, directors, or others in controll just before dissolution and get a judgment on the pre-dissolution assets.",272
+30,"Case law is more clear on this one: If you sign a note as maker, the payee may sue you and get a judgment without joining the co-makers. (Reed v Buck) If you want the co-makers to share in the downside of the suit, you better join them yourself.",253
+31,"You can't sue an insurance company unless you also sue the insured party. Yes, some rules are clearly meant to protect insurance companies. Several rules are more easily understood of you view them as that way. What do you think TRE 408 is for?",252
+32,A surety (person who takes responsibility for another's performance) who is being sued along with a party to a contract can ask that the question of the existance or validity of the surety be tried first. IOW: Am I *REALLY* responsible for his performance?,264
+33,"If you sue or are sued by political or administrative subdivision of the State, that suit has to identify the subdivision by corporate name. (Can't be Big D v Tom, although it feels that way sometimes.)",210
+34,"If you sue an insured sheriff, constable or deputy for something they did as a sheriff, constable or deputy, they can drag their insurance company into the suit and delay the suit to get their insurance company served.",226
+35,"If the State or one of its subdivision sues a government official or a depository, the official's or depository's or sureties and bonds may be joined as defendants until the court can sort out who is liable.",215
+36,"If one state official's bond is sued, the sureties of any subordinate state office who is alleged to contributed to the plaintiff's damages can also be brought in as defendants.",185
+37,"Either side of the case may bring in third parties, but can't do so in a way calculated to do nothing but delay the trial of the case.",142
+38,"If a defendant believes that others are at least partially liable to the plaintiff or to the defendant for damages, the defendant can add those others to the case and sue them as defendants. Here, defendants also means counterdefendants.",245
+39,"If a third party is required for just resolution of a case and is amenable to service, that party shall be joined and, if not, the judge must decide whether the case can continue.",187
+40,People claiming a right to relief arising from the same wrong can join their claims to existing claims if they want to. All people who may be liable for the same wrong may be joind as defendants.,203
+41,"Parties and claims can be joined at any time before the case is submitted to the jury. Likewise, any misjoined parties or claims can be redocketed as separate suits. In other words, the judge can fix joinder and mis-joinder problems until very late in the game.",269
+42(a),"A member of a class of plaintiffs may sue as representatives of the class if there are (1) too many class members for joinder and (2) common questions of law OR fact among all class members, and the representatives will adequately protect the class members.",268
+42(b),"A class action can proceed if a plaintiff satisfies 42(a) AND separate suits would lead to inconsistent results, or a decision for one is as good as a decision for all, or the defendant his equally offended all members of the class, etc.",248
+42(c),"Early on, the judge must either certify the class by defining the class, claims, and defendants, or refuse to certify the class and explain why, in detail.",166
+42(d),"Classes can be subdivided into subclasses, which each subclass treated as a class under TRCP 42.",107
+42(e),Any settlement or compromise in a class action suit must be approved by the judge at a hearing. Any class member may object. The judge must approve before an objection can be withdrawn.,196
+42(f),Unnamed members of a class are not considered parties for discovery purposes.,88
+42(g),"The judge must appoint attorneys to represent the class. In selecting whom to appoint as class counsel, the judge may consider an matter pertinent to the attorney's ability to adequately represent the interests of the class.",235
+42(h) and (i),"The judge approves attorney's fees based on a ""lodestar"" figure, which is the number of hours reasonably worked times an hourly rate. The fees must be 25% to 400% of the lodestar and have the same cash:non-cash ratio as the settlement to the class members.",275
+43,"A plaintiff who is exposed to multiple liability may require that all persons having claims, irrespective of origin, be joined into one suit.",149
+44,"Children and other lunatics, idiots, or incompetents who don't have legal guardians can be represented by ""next friend"". Ex: A parent can bring a SAPCR on behalf of a minor child who has also become a parent.",216
+45,"A  lawsuit is underway once the plaintiff files a petition giving a concise statement of claims and the defendant files an answer. The substance of pleadings prevails over their form: Read the pleading, not the heading.",227
+46,What went wrong in Texas that we must have a rule that says the petition must be one single document and the answer must be one single document?,152
+47,"The original pleading must breifly state the cause of action sufficient to give fair notice of what the suit is about and the damages sought. Except for family cases, the statement on damages must state that damages sought are within a certain set of ranges.",266
+48,"A party may make alternative causes of action and, as long as one of the claims is valid, the case can progress.",120
+49,A single judgment is valid even if there are multiple claims and all but one are defective.,99
+50,Claims and defenses must be made in separately numbered paragraphs.,75
+51,A defendant can bring all hi sgrievances against the plaintiff in a countersuit and join others. Those joined can bring all their complaints against everyone already at the party.,187
+52,"An allegation that a corporation is incorporated shall be taken as true, UNLESS denied by the affidavit of the adverse party explaining how the corporation was formed.",175
+53,"If you're suing on a private law or special act, reference it by its title, date of approval, and then provide as much substance of it as is pertinent to this suit. (Divorces used by be granted by private law of the legislature, thus the old term ""Bill of Divorce."")",274
+54,"Alleging that ""all conditions precedent have been met"" is sufficient and you only need to prove the satisfaction of the conditions precedent that the opposing party denies.",180
+55,"In announcing its judgment, the court need only state that it has jurisdiction without going into all the details proving that the court has jurisdiction over the parties and the subject matter of the suit.",214
+56,"Special damages are damages that ""result naturally, but not necessarily, from the defdant's wrongfl acts."" (Arthur Andersen v Perry) A party claiming special damages must specifically explain what they are.",214
+57,"Establishes the requirements of a signature block for pleadings, which are echoed in TRCP 191.3. NOTE: Fax numbers are not required. If you don't have a fax number, you don't have to provide one.",203
+58,"Statements in a pleading may be adopted by reference in other documents so long as the underlying pleading has not been superseded. In these days of electronic cut and paste, and, by ""these days"" I means days since 1984, why make everyone flip back to a prior pleading?",277
+59,All written instruments constituting a claim sued on or supporting a defense may be attached to or included in the body of the pleading. A pleading is not defective because it does not raise a claim that is available in the exhibit. No other writings may be attached.,275
+59 (again),"So family attorneys: Stop attaching pictures of the other parent drunk and naked on the floor. Those are evidence, not explanations. No one needs to see it and it might form the basis of a motion to strike your pleading. Don't be gross.",252
+60,"Anyone can intervene at any time before final judgment. Intervenors may be sticken by the judge for sufficient cause on the motion of a party unless the intervenor can show a justiciable interest, meaning an independent right to recover.",245
+61,The rules of pleading apply equally to original parties and intervenors. This rule exists because someone thought otherwise. Interesting.,145
+62,Distinguishes between amended pleadings and supplemental pleadings. An amendment adds something to or withdraws something from a pleading or answer.,156
+63,"Parties can amend at any time so long as they do so in a manner that is not designed to cause surprise to the other side. Amending within 7 days of trial requires permission from the judge, who shall give permission unless the amendment will surprise the other side.",274
+64,"When filing amended pleadings, use a proper header that indicates the ordinal rank of the amendment. Also, the amended pleading must be self-contained. Don't just file the amended paragraph: file the entire pleading.",224
+65,"Once a substituted pleading is filed, unless sticken for some reason, the prior pleading is of no further consequence, unless there is a limitations issue that can only be resolved by reference to the date or substance of the superseded pleading.",254
+66,"If a party objects that the other side is seeking relief outside of their pleadings, the court must allow an amendment to the pleadings unless the objecting party can explain how that would be unjust. The court may continue the case as needed.",251
+67,"If issues outside of the pleadings are tried by consent, the issues shall be treated as if they were in the pleadings and the scope-creeping party may amend to include those issues if the judge allows it",211
+68,The court may require a party to replead so that their pleadings conform to the rules.,94
+69,"Supplemental petitions or answers shall respond to the last pleading by the other party and must not repeat more than is necessary to explain the supplement. Supplements must be named ordinally, e.g. First, Second, Third.",229
+1,Tomorrow starts a repeat of my TRCP tweets.,50
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7
+,,7

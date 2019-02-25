@@ -102,7 +102,15 @@ class Publisher(object):
             (str): The next Tweet to post to Twitter.
         """
         # Read our list of possible tweets into a Pandas dataframe.
-        df = pd.read_csv(TWEET_FILE)
+        try:
+            df = pd.read_csv(TWEET_FILE)
+        except UnicodeDecodeError as e:
+            self.logger.error("Error reading %s: %s", TWEET_FILE, e)
+            with open(TWEET_FILE, "r") as infile:
+                text_content = infile.read()
+                for i in range(len(text_content)):
+                    if ord(text_content[i:i+1]) > 127:
+                        self.logger.info("Suspect: %s", text_content[max(0, i-50):min(i+50, len(text_content)-1)])
 
         # Go through each row of the dataframe looking for a row having the same TRCP
         # number as the last one we posted to Twitter.
@@ -196,7 +204,7 @@ def minutes_until_time(future_time:str)->int:
     # Figure out how many minutes between now and future_time.
     now = datetime.now()
     seconds_remaining = int((timedelta(hours=24) - (now - now.replace(hour=hour, minute=minute, second=0, microsecond=0))).total_seconds() % (24*60*60))
-    minutes_remaining = int(result / 60)
+    minutes_remaining = int(seconds_remaining / 60)
     return minutes_remaining
 
 def get_options()->dict:

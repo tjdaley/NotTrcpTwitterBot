@@ -1,3 +1,5 @@
 keys.py
 *.log
 *.pyc
+*_followers.json
+*_report.json

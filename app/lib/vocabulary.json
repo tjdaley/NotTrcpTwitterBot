@@ -14,13 +14,13 @@
         "added",
         "gained",
         "attracted",
-        "brought in"
+        "brought in",
+        "have"
     ],
     "ADDITIONAL": [
         "new",
         "additional",
-        "more",
-        "another"
+        "more"
     ],
     "FOLLOWERS": [
         ["follower", "followers"],

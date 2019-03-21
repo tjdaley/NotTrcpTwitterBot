@@ -8,9 +8,10 @@ import argparse
 from datetime import datetime
 import json
 import twitter
+import uuid
 
 from lib.clients_db import ClientDb
-from lib.keys import Keys
+from lib.keysa import Keys
 from lib.logger import Logger
 from lib.progress_bar import ProgressBar
 
@@ -87,7 +88,7 @@ class FollowerTracker(object):
             if follower not in cur_followers:
                 deleted_followers.append(follower)
 
-        result = {"added": added_followers, "deleted": deleted_followers}
+        result = {"added": added_followers, "deleted": deleted_followers, "uuid": uuid.uuid3(uuid.NAMESPACE_DNS, "analyzemytweets.com")}
         return result
 
     def list_followers(self, followers:list, description:str, screen_name:str)->None:
@@ -125,7 +126,10 @@ def get_options()->dict:
     """
 
     parser = argparse.ArgumentParser(description="Track followers.")
-    parser.add_argument('--status', '-s', action='store_true', default=False, help='Indicates you want a status bar on the screen. Default is no.')
+    parser.add_argument('--status', '-s', action='store_true', default=False,
+                        help='Indicates you want a status bar on the screen. Default is no.')
+    parser.add_argument("--nowait", action="store_true", default=False,
+                        help='Whether to wait if another process has locked the client database. Default is to wait.')
     args = parser.parse_args()
     return args
 
@@ -138,7 +142,7 @@ def main():
     """
     options = get_options()
 
-    client_db = ClientDb()
+    client_db = ClientDb(wait=(not options.nowait), process_name=__file__)
     screen_names = client_db.active_clients(client_db.load_clients())
     tracker = FollowerTracker(screen_names)
     tracker.logger.info("Started.")

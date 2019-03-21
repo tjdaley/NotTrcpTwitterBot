@@ -6,7 +6,10 @@ __version__ = "0.0.1"
 
 from datetime import datetime
 import json
+import socket
+import time
 
+from lib.lock import Lock
 from lib.logger import Logger
 
 FOLLOWER_FILE  = "../data/{}_followers.json"
@@ -18,20 +21,25 @@ class ClientDb(object):
     """
     Encapsulates our Twitter publisher functions.
     """
-    def __init__(self, screen_name:str=None):
+    def __init__(self, process_name="another process", wait=True):
+        """
+        Class initializer.
+
+        Args:
+            wait (bool): True if we should wait until we can lock the DB.
+        """
         self.logger = Logger.get_logger("nottrcp.client_db")
+        self.lock = Lock(wait=wait)
+        self.lock.lock(process_name=process_name)
 
     def load_clients(self)->dict:
         """
         Load list of clients we are monitoring.
 
-        Args:
-            None
-
         Returns:
             (dict): Of clients.
         """
-        client_db = {"clients": []}
+        client_db = {"clients": {}}
         try:
             with open(CLIENT_FILE, "r") as client_file:
                 client_db = json.load(client_file)
@@ -41,6 +49,46 @@ class ClientDb(object):
             self.logger.exception(e)
         
         return client_db["clients"]
+
+    def merge_clients(self, clients:dict, new_clients:dict)->dict:
+        """
+        Merge new clients into current clients dict.
+
+        Args:
+            clients (dict): From load_clients()
+            new_clients (dict): A list of our current followers.
+        
+        Returns:
+            (dict): Merged list of clients with new ones added and un-followers removed.
+        """
+        merged_clients = {}
+
+        for screen_name, client in clients:
+            if screen_name in new_clients:
+                merged_clients[screen_name] = client
+
+        for screen_name, client in new_clients:
+            if screen_name not in merged_clients:
+                merged_clients[screen_name] = client
+        
+        return merged_clients
+
+    def save_clients(self, clients:dict):
+        """
+        Save clients to the clients.json file.
+
+        Args:
+            clients (dict): key is screen name, value is description of client.
+        """
+        client_db = {"clients": clients}
+        try:
+            with open(CLIENT_FILE, "w") as client_file:
+                json.dump(client_db, client_file, indent=3)
+        except Exception as e:
+            self.logger.error(e)
+            return False
+
+        return True
 
     def subscription_ended(self, end_date:str)->bool:
         """

@@ -10,15 +10,16 @@ import json
 import twitter
 
 from lib.clients_db import ClientDb
-from lib.keys import Keys
+from lib.keysa import Keys
 from lib.logger import Logger
 from lib.substitution import PhraseMaker
 from lib.progress_bar import ProgressBar
 
 VOCABULARY = "./lib/vocabulary.json"
 LAST_REPORT_FILE = "../data/last_report.json"
-ADDED_TEMPLATE = "{{POSITIVE}} You {{ADDED}} %s {{ADDITIONAL}} {{FOLLOWERS}}."
-LOST_TEMPLATE = "{{NEGATIVE}} Your account {{LOST}} %s {{FOLLOWERS}}."
+TEMPLATES = {}
+TEMPLATES["added"] = "{{POSITIVE}} You {{ADDED}} %s {{ADDITIONAL}} {{FOLLOWERS}}."
+TEMPLATES["deleted"] = "{{NEGATIVE}} Your account {{LOST}} %s {{FOLLOWERS}}."
 DATE_FORMAT  = "%Y-%m-%d %X"
 
 class TrackingReporter(object):
@@ -76,11 +77,13 @@ class TrackingReporter(object):
         report = ""
         for report_key in ["added", "deleted"]:
             if report_data[report_key]:
-                report += self.phrase_maker.make(ADDED_TEMPLATE, len(report_data[report_key]))
+                report += self.phrase_maker.make(TEMPLATES[report_key], len(report_data[report_key])) + " "
                 report = report % len(report_data[report_key])
 
         if report:
-            return report
+            instructions = "View the full report at http://www.analyzemytweets.com using login code {}" \
+                .format(report_data["uuid"])
+            return report + instructions
 
         return None
 
@@ -155,6 +158,9 @@ def get_options()->dict:
     parser = argparse.ArgumentParser(description="Report network changes.")
     parser.add_argument("--notweet", action="store_true", default=False, help="Indicates that you want a dry-run...no actual tweeting.")
     parser.add_argument('--status', '-s', action='store_true', default=False, help='Indicates you want a status bar on the screen. Default is no.')
+    parser.add_argument("--nowait", action="store_true", default=False,
+                        help='Whether to wait if another process has locked the client database. Default is to wait.')
+
     args = parser.parse_args()
     return args
 
@@ -166,7 +172,7 @@ def main():
     """
     options = get_options()
 
-    client_db = ClientDb()
+    client_db = ClientDb(wait=(not options.nowait), process_name=__file__)
     screen_names = client_db.active_clients(client_db.load_clients())
     reporter = TrackingReporter(screen_names)
     reporter.logger.info("Started.")
